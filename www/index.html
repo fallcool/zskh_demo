@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="Glms">
+<head>
+        <meta charset="utf-8">
+        <meta name="author" content="Francesco Zaia">
+        <meta name="description" content="my-angular-test">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="HandheldFriendly" content="True">
+
+        <title>勾股考试系统</title>
+
+        <link rel="shortcut icon" href="" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="57x57" href="">
+        <link rel="apple-touch-icon" sizes="72x72" href="">
+        <link rel="apple-touch-icon" sizes="114x114" href="">
+        <link rel="apple-touch-icon" sizes="144x144" href="">
+		
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" id="css-main" href="css/oneui.css">
+		
+        <script src="libs/angularjs/angular.min.js"></script>
+		<script src="libs/angularjs/angular-route.min.js"></script>
+		<script src="scripts/app.js"></script>
+    </head>
+    <body class="bg-white">
+        <div class="header-navbar-transparent header-navbar-scroll" id="page-container">
+           
+
+            <!-- Header -->
+            <header class="content-mini content-mini-full hidden-md hidden-lg" id="header-navbar" style="">
+                <div class="content-boxed">
+
+                    <!-- Header Navigation Left -->
+                    <ul class="nav-header pull-left">
+                        <li class="header-content">
+                            <a href="/" class="h5">
+                                返回
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- END Header Navigation Left -->
+                </div>
+            </header>
+            <!-- END Header -->
+
+            <!-- Main Container -->
+				<ng-view></ng-view>
+			<!-- END Main Container -->
+
+           
+       
+       
+            
+   
+
+       
+
+    </body>
+</html>
