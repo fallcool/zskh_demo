@@ -18,14 +18,36 @@ var app = angular.module("Glms", ["ngRoute"])
 							redirectTo: "/home"
 						})
 				 })
-				 .controller("courseController", function($scope) {
-					 $scope.buttonName = "阅读";
-					 $scope.time = 10000;
-					 
-					 $scope.onClick = function() {
-						 $scope.buttonName = "已阅读"; 
-					  }
-					}
+				 .controller("courseController", ['$scope', '$interval', '$timeout', function($scope, $interval, $timeout) {
+						time = 10000;
+						$scope.stopSpam = true;
+						$scope.buttonName = time / 1000 + "秒后点击";
+						
+						
+						stopTime = $interval(updateTime, 1000);
+						$timeout(activateBtn, time);
+						
+						function updateTime(){
+							time = time - 1000;
+							$scope.buttonName = time / 1000 + "秒后点击";
+							
+							if ( time <= 0 ) {
+								$scope.buttonName = "阅读";
+								$interval.cancel(stopTime);
+							}
+						};
+
+						function activateBtn(){
+							$scope.stopSpam = false;
+						};
+
+
+						$scope.complete = function(){
+							$scope.buttonName = "已阅读";
+							$scope.stopSpam = true;
+							
+						};
+					}]
 					
 				 )
 				 .controller("quizController", function($scope) {
@@ -42,7 +64,7 @@ var app = angular.module("Glms", ["ngRoute"])
 						transclude: true,
 						scope: {
 						  showTimer: '=',
-						  onClick: '&',
+						  onClick: '=',
 						  timeout: '='
 						},
 						link: function(scope, element, attrs){
@@ -58,6 +80,6 @@ var app = angular.module("Glms", ["ngRoute"])
 							 scope.showTimer = false;
 						  }, scope.timeout);
 						},
-						template: '<button class="btn btn-rounded btn-noborder btn-lg btn-primary" ng-click="onClick()" ng-disabled="timer"><span ng-transclude></span>&nbsp<span ng-if="showTimer">({{ timerCount / 1000 }}秒后)</span></button>'
+						template: '<button type="button" class="btn btn-rounded btn-noborder btn-lg btn-primary" ng-click="onClick()" ><span ng-transclude></span>&nbsp<span ng-if="showTimer">({{ timerCount / 1000 }}秒后)</span></button>'
 					  };
 					});

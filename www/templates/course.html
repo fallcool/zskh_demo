@@ -23,7 +23,7 @@
                     <section class="content content-full content-boxed">
                         <!-- Section Content -->
                         <div class="push-20-t push-20 text-center">
-                            <timerbutton ng-click="onClick()" show-timer="true" timeout="time">{{ buttonName }}</timerbutton>
+                            <button ng-disabled="stopSpam" class="btn btn-rounded btn-noborder btn-lg btn-success" ng-click="complete()">{{ buttonName }}</button>
                         </div>
                         <!-- Section Content END -->
                     </section>
